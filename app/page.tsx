@@ -477,13 +477,33 @@ export default function Home() {
         .tool-tabs em { color:#816164!important; }
         .spread-options button.active>small,.spread-options button.active>i { color:#875936!important; }
       `}</style>
-      <header className={`nav site-nav ${menuOpen ? "menu-open" : ""}`}>
-        <a className="brand" href="#top" aria-label="回到首頁" onClick={() => setMenuOpen(false)}>ZOLACOCO <span>TAROT</span></a>
-        <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="primary-menu" aria-label={menuOpen ? "關閉選單" : "開啟選單"} onClick={() => setMenuOpen((open) => !open)}><i /><i /><i /></button>
-        <nav className="primary-menu" id="primary-menu" aria-label="主要功能選單">
-          <a href="#draw" onClick={() => setMenuOpen(false)}>塔羅抽牌</a><a href="/pendulum">靈擺占卜</a><a href="/astro-dice">星骰指引</a><a href="/healing-room">療癒小房間</a><a href="/healing-room/yuanchen">元辰宮</a><a href="#explore" onClick={() => setMenuOpen(false)}>學習塔羅</a><button className="nav-guide" onClick={() => { setGuideOpen(true); setMenuOpen(false); }}>使用教學</button><a href="#about" onClick={() => setMenuOpen(false)}>關於 Zola</a>
-        </nav>
-        <div className="account-nav">{authChecked && (viewer ? <><span className="account-name">{viewer.displayName}</span>{viewer.isAdmin && <a className="account-link" href="/admin">查看後台</a>}<a className="account-link" href="/signout-with-chatgpt?return_to=/" onClick={() => { try { localStorage.removeItem(ARCHETYPE_LOGIN_SET_KEY); } catch { /* Browser storage may be unavailable. */ } }}>登出</a></> : <a className="account-link login-link" href="/signin-with-chatgpt?return_to=/#explore">登入／註冊</a>)}</div>
+      <header className="zola-navbar">
+        <div className="zola-navbar__inner">
+          <a className="zola-navbar__logo" href="#top" aria-label="回到首頁" onClick={() => setMenuOpen(false)}>ZOLACOCO TAROT</a>
+          <nav className="zola-navbar__links" id="primary-menu" aria-label="主要功能選單">
+            <a className="zola-navbar__link" href="#draw" onClick={() => setMenuOpen(false)}>塔羅抽牌</a>
+            <a className="zola-navbar__link" href="/pendulum">靈擺占卜</a>
+            <a className="zola-navbar__link" href="/astro-dice">星骰指引</a>
+            <a className="zola-navbar__link" href="/healing-room">療癒小房間</a>
+            <a className="zola-navbar__link" href="/healing-room/yuanchen">元辰宮</a>
+            <a className="zola-navbar__link" href="#explore" onClick={() => setMenuOpen(false)}>學習塔羅</a>
+            <button type="button" className="zola-navbar__link" onClick={() => { setGuideOpen(true); setMenuOpen(false); }}>使用教學</button>
+            <a className="zola-navbar__link" href="#about" onClick={() => setMenuOpen(false)}>關於 Zola</a>
+          </nav>
+          <div className="zola-navbar__account">{authChecked && (viewer ? <><span className="account-name">{viewer.displayName}</span>{viewer.isAdmin && <a className="account-link" href="/admin">查看後台</a>}<a className="account-link" href="/signout-with-chatgpt?return_to=/" onClick={() => { try { localStorage.removeItem(ARCHETYPE_LOGIN_SET_KEY); } catch { /* Browser storage may be unavailable. */ } }}>登出</a></> : <a className="account-link login-link" href="/signin-with-chatgpt?return_to=/#explore">登入／註冊</a>)}</div>
+          <button className="zola-navbar__toggle" type="button" aria-expanded={menuOpen} aria-controls="zola-mobile-menu" aria-label={menuOpen ? "關閉選單" : "開啟選單"} onClick={() => setMenuOpen((open) => !open)}><span /><span /><span /></button>
+        </div>
+        {menuOpen && <div className="zola-navbar__mobile-menu" id="zola-mobile-menu">
+          <a className="zola-navbar__mobile-link" href="#draw" onClick={() => setMenuOpen(false)}>塔羅抽牌</a>
+          <a className="zola-navbar__mobile-link" href="/pendulum" onClick={() => setMenuOpen(false)}>靈擺占卜</a>
+          <a className="zola-navbar__mobile-link" href="/astro-dice" onClick={() => setMenuOpen(false)}>星骰指引</a>
+          <a className="zola-navbar__mobile-link" href="/healing-room" onClick={() => setMenuOpen(false)}>療癒小房間</a>
+          <a className="zola-navbar__mobile-link" href="/healing-room/yuanchen" onClick={() => setMenuOpen(false)}>元辰宮</a>
+          <a className="zola-navbar__mobile-link" href="#explore" onClick={() => setMenuOpen(false)}>學習塔羅</a>
+          <button type="button" className="zola-navbar__mobile-link" onClick={() => { setGuideOpen(true); setMenuOpen(false); }}>使用教學</button>
+          <a className="zola-navbar__mobile-link" href="#about" onClick={() => setMenuOpen(false)}>關於 Zola</a>
+          <div className="zola-navbar__mobile-account">{authChecked && (viewer ? <><span className="account-name">{viewer.displayName}</span>{viewer.isAdmin && <a className="zola-navbar__mobile-link" href="/admin" onClick={() => setMenuOpen(false)}>查看後台</a>}<a className="zola-navbar__mobile-link" href="/signout-with-chatgpt?return_to=/" onClick={() => { setMenuOpen(false); try { localStorage.removeItem(ARCHETYPE_LOGIN_SET_KEY); } catch { /* Browser storage may be unavailable. */ } }}>登出</a></> : <a className="zola-navbar__mobile-link" href="/signin-with-chatgpt?return_to=/#explore" onClick={() => setMenuOpen(false)}>登入／註冊</a>)}</div>
+        </div>}
       </header>
 
       {welcomeOpen && <div className={`welcome-layer welcome-cover-layer welcome-${welcomeStage}`} role="dialog" aria-modal="true" aria-label="歡迎進入 Zolacoco Tarot">
