@@ -1,1 +1,135 @@
+/* ����������������������������������������������������������������������������������
+   Zolacoco Tarot 繚 Navbar Styles
+   ���������������������������������������������������������������������������������� */
 
+.zola-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 239, 230, 0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(198, 166, 107, 0.3);
+}
+
+.zola-navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 64px;
+  padding: 0 var(--zola-space-page-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.zola-navbar__logo {
+  font-family: var(--zola-font-brand);
+  font-size: 20px;
+  color: var(--zola-heading-dark);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.zola-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.zola-navbar__link {
+  font-family: var(--zola-font-sans-tc);
+  font-size: var(--zola-text-body);
+  color: var(--zola-body-dark);
+  text-decoration: none;
+  padding: 6px 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.zola-navbar__link--active {
+  color: var(--zola-heading-dark);
+  border-bottom-color: var(--zola-champagne-gold);
+}
+
+button.zola-navbar__link {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.zola-navbar__account {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.zola-navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  min-width: var(--zola-min-tap);
+  min-height: var(--zola-min-tap);
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.zola-navbar__toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--zola-heading-dark);
+}
+
+.zola-navbar__mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .zola-navbar__links {
+    display: none;
+  }
+  .zola-navbar__account {
+    display: none;
+  }
+  .zola-navbar__toggle {
+    display: flex;
+  }
+  .zola-navbar__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    background: rgba(247, 239, 230, 0.96);
+    padding: var(--zola-space-page-h);
+    gap: 4px;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  .zola-navbar__mobile-link {
+    font-family: var(--zola-font-sans-tc);
+    font-size: var(--zola-text-body);
+    color: var(--zola-body-dark);
+    text-decoration: none;
+    min-height: var(--zola-min-tap);
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 8px;
+  }
+  button.zola-navbar__mobile-link {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  .zola-navbar__mobile-account {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(198, 166, 107, 0.3);
+  }
+}
