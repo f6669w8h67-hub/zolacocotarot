@@ -429,7 +429,7 @@ export default function Home() {
       setArchetypeCardId(nextCardId);
       setArchetypeResult(themeIndex);
       const resultCard = tarotCards.find((item) => item.id === nextCardId);
-      logActivity("archetype", "內在原型探索", `${archetypeThemes[themeIndex]?.title ?? "內在原型"}・${resultCard?.name ?? ""}`, { theme: archetypeThemes[themeIndex], card: resultCard?.name, scores });
+      logActivity("archetype", "內在原型探索", `${archetypeThemes[themeIndex] ?? "內在原型"}・${resultCard?.name ?? ""}`, { theme: archetypeThemes[themeIndex], card: resultCard?.name, scores });
     }
     else setArchetypeStep((step) => step + 1);
   }
